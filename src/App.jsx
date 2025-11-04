@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Box, createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import Homepage from "./Components/Homepage";
-import Produkter from "./Components/Produkter";
 import OmOss from "./Components/OmOss";
 import Priser from "./Components/Priser";
 import Oppettider from "./Components/Oppettider";
+import Layout from "./Components/Layout";
+import Bilder from "./Components/Bilder";
+import Bokningar from "./Components/Bokningar";
 
 const theme = createTheme({
   components: {
@@ -55,29 +55,17 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        {/* Wrapper med Navbar och Footer */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "100vh",
-          }}
-        >
-          <Navbar />
-
-          {/* Här renderas aktuell route */}
-          <Box sx={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/produkter" element={<Produkter />} />
-              <Route path="/om-oss" element={<OmOss />} />
-              <Route path="/priser" element={<Priser />} />
-              <Route path="/oppettider" element={<Oppettider />} />
-            </Routes>
-          </Box>
-
-          <Footer />
-        </Box>
+        {/* Layout omsluter allt */}
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/om-oss" element={<OmOss />} />
+            <Route path="/bilder" element={<Bilder/>} />
+            <Route path="/bokningar" element={<Bokningar />} />
+            <Route path="/priser" element={<Priser />} />
+            <Route path="/oppettider" element={<Oppettider />} />
+          </Routes>
+        </Layout>
       </Router>
     </ThemeProvider>
   );

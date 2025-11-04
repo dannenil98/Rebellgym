@@ -4,54 +4,73 @@ const OmOss = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#000",
-        color: "#3E6889",
         flex: 1,
+        width: "100%",
         display: "flex",
-        flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
-        textAlign: "center",
-        px: 2,
-        py: 6,
-        paddingTop: "120px", // 🔥 konsekvent avstånd
+        flexDirection: "column",
+        overflow: "hidden",
       }}
     >
-      <Typography
-        variant="h2"
+      <Box
         sx={{
-          fontFamily: "'Special Gothic Expanded One', sans-serif",
-          fontSize: { xs: "40px", sm: "60px" },
-          mb: 3,
-          WebkitTextStroke: "1px #3E6889",
+          color: "#3E6889",
+          textAlign: "center",
+          px: 2,
+          py: 6,
+          paddingTop: "120px",
+          maxWidth: "900px",
         }}
       >
-        OM OSS
-      </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            fontFamily: "'Special Gothic Expanded One', sans-serif",
+            fontSize: { xs: "28px", sm: "40px", md: "60px" }, // mindre på små skärmar
+            mb: 3,
+            WebkitTextStroke: "1px #3E6889",
+          }}
+        >
+          OM OSS
+        </Typography>
 
-      <Typography
-        variant="body1"
-        sx={{
-          maxWidth: "800px",
-          mb: 3,
-          fontSize: "18px",
-          lineHeight: 1.6,
-        }}
-      >
-        Rebell Gym är en träningsanläggning där gemenskap, styrka och passion
-        står i centrum. Vi erbjuder en rå, genuin träningsmiljö för alla nivåer –
-        oavsett om du är nybörjare eller erfaren atlet. Hos oss handlar träning
-        om att utmana dig själv och bli den starkaste versionen av dig själv.
-      </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            mb: 3,
+            fontSize: { xs: "14px", sm: "16px", md: "18px" }, // mindre på små skärmar
+            lineHeight: 1.6,
+          }}
+        >
+          Min vision med rebell gym är att skapa en samlingspunkt med fokus på träning och välmående. Oavsett om du är ungdom, pensionär, stillasittande eller idrottare. 
+          Här kommer du hitta ett sätt att stärka dig själv såväl fysiskt som mentalt. 
+          Hos oss handlar helt enkelt träning om att bli den starkaste versionen av dig själv. 
+        </Typography>
 
-      <Typography
-        sx={{
-          fontSize: "16px",
-          maxWidth: "600px",
-          opacity: 0.8,
-        }}
-      >
-        Välkommen till Rebell Gym – där styrka möter gemenskap.
-      </Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: "12px", sm: "14px", md: "16px" }, // mindre på små skärmar
+            opacity: 0.8,
+          }}
+        >
+          Välkommen till Rebell Gym – där styrka möter gemenskap.
+        </Typography>
+        <Box
+          component="img"
+          src="/assets/Omossbild.jpg"
+          alt="Om oss bild"
+          sx={{
+            width: { xs: "180px", sm: "300px", md: "350px" },
+            height: { xs: "180px", sm: "300px", md: "350px" },
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginTop: "50px",
+            mx: "auto",
+            boxShadow: "0 8px 20px rgba(62,104,137,0.5)", // snygg skugga
+          }}
+        />
+      </Box>
     </Box>
   );
 };

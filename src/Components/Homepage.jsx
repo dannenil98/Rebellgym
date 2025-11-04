@@ -9,7 +9,6 @@ const Homepage = () => {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        background: "radial-gradient(circle at center, #0a0a0a 0%, #000 100%)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -27,7 +26,7 @@ const Homepage = () => {
           height: "100vh",
           textAlign: "center",
           zIndex: 1,
-          px: 2,
+          px: { xs: 3, sm: 6 },
         }}
       >
         {/* Logga */}
@@ -53,12 +52,7 @@ const Homepage = () => {
         <Typography
           sx={{
             fontWeight: "bold",
-            fontSize: {
-              xs: "50px",
-              sm: "80px",
-              md: "100px",
-              lg: "120px",
-            },
+            fontSize: { xs: "35px", sm: "60px", md: "100px", lg: "120px" },
             animation: "fadeUp 1s ease-out forwards",
             letterSpacing: "5px",
             opacity: 0,
@@ -75,7 +69,7 @@ const Homepage = () => {
         <Typography
           sx={{
             mt: 2,
-            fontSize: "20px",
+            fontSize: { xs: "16px", sm: "20px" },
             letterSpacing: "2px",
             opacity: 0,
             animation: "fadeUp 1.5s ease-out forwards",
@@ -86,13 +80,17 @@ const Homepage = () => {
           Där styrka möter gemenskap 💪
         </Typography>
 
-        {/* Knapp */}
+        {/* Knappar */}
         <Box
           sx={{
             mt: 4,
             opacity: 0,
             animation: "fadeUp 1.5s ease-out forwards",
             animationDelay: "1.6s",
+            display: "flex",
+            gap: 2,
+            justifyContent: "center",
+            flexWrap: "wrap",
           }}
         >
           <Button
@@ -102,16 +100,29 @@ const Homepage = () => {
               borderColor: "#3E6889",
               color: "#3E6889",
               textTransform: "none",
-              fontSize: "16px",
-              px: 4,
+              fontSize: "14px",
+              px: { xs: 3, sm: 4 },
               py: 1,
-              "&:hover": {
-                borderColor: "#4fc3f7",
-                color: "#4fc3f7",
-              },
+              "&:hover": { borderColor: "#4fc3f7", color: "#4fc3f7" },
             }}
           >
             Se priser
+          </Button>
+          
+          <Button
+            variant="outlined"
+            href="/bokningar"
+            sx={{
+              borderColor: "#3E6889",
+              color: "#3E6889",
+              textTransform: "none",
+              fontSize: "14px",
+              px: { xs: 3, sm: 4 },
+              py: 1,
+              "&:hover": { borderColor: "#4fc3f7", color: "#4fc3f7" },
+            }}
+          >
+            Boka PT-pass
           </Button>
         </Box>
       </Box>
@@ -121,15 +132,15 @@ const Homepage = () => {
         sx={{
           width: "100%",
           backgroundColor: "#0d0d0d",
-          py: 8,
-          px: { xs: 2, sm: 6 },
+          py: { xs: 4, sm: 8 },
+          px: { xs: 3, sm: 14 },
         }}
       >
         <Typography
-          variant="h3"
+          variant="h4"
           sx={{
             textAlign: "center",
-            mb: 6,
+            mb: { xs: 4, sm: 6 },
             fontFamily: "'Special Gothic Expanded One', sans-serif",
             WebkitTextStroke: "1px #3E6889",
           }}
@@ -137,12 +148,12 @@ const Homepage = () => {
           VARFÖR REBELL GYM?
         </Typography>
 
-        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
+        <Grid container spacing={{ xs: 2, sm: 4 }} justifyContent="center" alignItems="stretch">
           {[
             {
               ikon: <FitnessCenterIcon sx={{ fontSize: 60, mb: 2 }} />,
-              titel: "Rå träningsmiljö",
-              text: "Ingen lyx, ingen bullshit – bara ren styrka och passion.",
+              titel: "Träning för alla",
+              text: "Hos oss finns en bra maskinpark för både nybörjare och erfarna. Vi har maskiner med viktmagasin och frivikter.",
             },
             {
               ikon: <GroupsIcon sx={{ fontSize: 60, mb: 2 }} />,
@@ -163,27 +174,24 @@ const Homepage = () => {
                   textAlign: "center",
                   color: "#3E6889",
                   boxShadow: "0 0 10px rgba(62,104,137,0.4)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "space-between",
+                  justifyContent: "flex-start",
                   height: "100%",
+                  padding: { xs: 2, sm: 3 },
                 }}
               >
                 <CardContent sx={{ flexGrow: 1 }}>
                   {item.ikon}
                   <Typography
                     variant="h6"
-                    sx={{
-                      fontFamily: "'Special Gothic Expanded One', sans-serif",
-                      mb: 1,
-                    }}
+                    sx={{ fontFamily: "'Special Gothic Expanded One', sans-serif", mb: 1 }}
                   >
                     {item.titel}
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ opacity: 0.8, fontSize: "16px" }}
+                    sx={{ opacity: 0.8, fontSize: { xs: "14px", sm: "16px" } }}
                   >
                     {item.text}
                   </Typography>
