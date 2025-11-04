@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Lightbox from "react-awesome-lightbox";
-import "react-awesome-lightbox/build/style.css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import "./Bilder.css";
 
 const images = [
@@ -22,32 +22,29 @@ const images = [
 ];
 
 export default function Bilder() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [index, setIndex] = useState(-1); // -1 betyder att lightbox inte är öppen
 
   return (
     <div className="bilder-page">
       <h1>Bilder från gymmet</h1>
       <p className="intro-text">
-      Upptäck våra ljusa lokaler, moderna maskiner och inspirerande detaljer som gör varje pass lite bättre! 💪
+        Upptäck våra ljusa lokaler, moderna maskiner och inspirerande detaljer som gör varje pass lite bättre! 💪
       </p>
 
       <div className="image-grid">
         {images.map((src, i) => (
-          <div
-            key={i}
-            className="image-item"
-            onClick={() => setSelectedImage(src)}
-          >
+          <div key={i} className="image-item" onClick={() => setIndex(i)}>
             <img src={src} alt={`Bild ${i + 1}`} loading="lazy" />
           </div>
         ))}
       </div>
 
-      {selectedImage && (
+      {index >= 0 && (
         <Lightbox
-          images={images.map((src) => ({ url: src }))}
-          startIndex={images.indexOf(selectedImage)}
-          onClose={() => setSelectedImage(null)}
+          slides={images.map((src) => ({ src }))}
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
         />
       )}
     </div>
