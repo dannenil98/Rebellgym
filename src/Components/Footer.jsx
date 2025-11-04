@@ -36,7 +36,7 @@ const Footer = () => {
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
           <EmailIcon sx={{ fontSize: "18px" }} />
-          <Typography sx={{ fontSize: "13px" }}>Rebellgym@gmail.com</Typography>
+          <Typography sx={{ fontSize: "13px" }}>Rebellgym@hotmail.com</Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
           <LocationOnIcon sx={{ fontSize: "18px" }} />
@@ -55,7 +55,7 @@ const Footer = () => {
         }}
       >
         <Typography sx={{ fontSize: "12px", opacity: 0.8 }}>
-          © {new Date().getFullYear()} Rebel Gym  💪
+          © {new Date().getFullYear()} RebellGym  💪
         </Typography>
       </Box>
     </Box>
