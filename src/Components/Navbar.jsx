@@ -55,7 +55,7 @@ const Navbar = () => {
             "&:hover": { color: "#4fc3f7" },
           }}
         >
-          REBELLGYM
+          REBELL GYM
         </Box>
 
         {/* Desktop-länkar med text + underline */}

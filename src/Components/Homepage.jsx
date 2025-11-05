@@ -71,7 +71,7 @@ const Homepage = () => {
         animationDelay: "0.8s",
       }}
     >
-      REBELLGYM
+      REBELL GYM
     </Typography>
 
     <Typography
