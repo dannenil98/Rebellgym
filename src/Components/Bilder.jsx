@@ -28,7 +28,7 @@ export default function Bilder() {
     <div className="bilder-page">
       <h1>Bilder från gymmet</h1>
       <p className="intro-text">
-        Upptäck våra ljusa lokaler, moderna maskiner och inspirerande detaljer som gör varje pass lite bättre! 💪
+        Upptäck våra ljusa lokaler, moderna maskiner och inspirerande detaljer som gör varje pass lite bättre! 
       </p>
 
       <div className="image-grid">

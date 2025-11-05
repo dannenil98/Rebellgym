@@ -55,7 +55,7 @@ const Footer = () => {
         }}
       >
         <Typography sx={{ fontSize: "12px", opacity: 0.8 }}>
-          © {new Date().getFullYear()} RebellGym  💪
+          © {new Date().getFullYear()} RebellGym 
         </Typography>
       </Box>
     </Box>
