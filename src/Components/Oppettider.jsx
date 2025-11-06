@@ -40,7 +40,7 @@ const Oppettider = () => {
           fontWeight: "bold",
         }}
       >
-        Gymmet är öppet alla dagar: 05:30 – 23:00
+        Gymmet är öppet alla dagar: 05:00 – 23:00
       </Typography>
 
       {/* Bemannade tider */}

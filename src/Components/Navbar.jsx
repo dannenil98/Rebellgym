@@ -11,11 +11,11 @@ const Navbar = () => {
   const location = useLocation();
 
   const navLinks = [
-    { text: "Om oss", path: "/om-oss" },
-    { text: "Priser", path: "/priser" },
     { text: "Öppettider", path: "/oppettider" },
+    { text: "Priser", path: "/priser" },
     { text: "Bilder", path: "/bilder" },
-    { text: "Bokningar", path: "/bokningar" },
+    { text: "Boka pass", path: "/bokningar" },
+    { text: "Om oss", path: "/om-oss" },
   ];
 
   const navbarHeight = 60;
@@ -72,9 +72,14 @@ const Navbar = () => {
                     fontSize: "16px",
                     textTransform: "none",
                     px: 1.5,
-                    borderBottom: isActive ? "3px solid #4fc3f7" : "3px solid transparent",
+                    borderBottom: isActive
+                      ? "3px solid #4fc3f7"
+                      : "3px solid transparent",
                     transition: "color 0.3s, border-bottom 0.3s",
-                    "&:hover": { color: "#4fc3f7", borderBottom: "3px solid #4fc3f7" },
+                    "&:hover": {
+                      color: "#4fc3f7",
+                      borderBottom: "3px solid #4fc3f7",
+                    },
                   }}
                 >
                   {item.text}
@@ -121,7 +126,11 @@ const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             sx={{ display: { xs: "flex", lg: "none" }, color: "#3E6889" }}
           >
-            {menuOpen ? <CloseIcon sx={{ fontSize: 30 }} /> : <MenuIcon sx={{ fontSize: 30 }} />}
+            {menuOpen ? (
+              <CloseIcon sx={{ fontSize: 30 }} />
+            ) : (
+              <MenuIcon sx={{ fontSize: 30 }} />
+            )}
           </IconButton>
         </Box>
       </Box>
@@ -179,11 +188,16 @@ const Navbar = () => {
                     justifyContent: "space-between",
                     py: 1,
                     borderBottom: isActive ? "3px solid #4fc3f7" : "none",
-                    "&:hover": { color: "#4fc3f7", borderBottom: "3px solid #4fc3f7" },
+                    "&:hover": {
+                      color: "#4fc3f7",
+                      borderBottom: "3px solid #4fc3f7",
+                    },
                   }}
                 >
-                  {item.text} 
-                  <span style={{ marginLeft: "auto", paddingRight: "10px" }}>➤</span>
+                  {item.text}
+                  <span style={{ marginLeft: "auto", paddingRight: "10px" }}>
+                    ➤
+                  </span>
                 </Button>
                 {index < navLinks.length - 1 && (
                   <Box
@@ -208,7 +222,15 @@ const Navbar = () => {
               my: 2,
             }}
           />
-          <Box sx={{ display: "flex", gap: 2, justifyContent: "center", width: "100%", mb: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: "center",
+              width: "100%",
+              mb: 1,
+            }}
+          >
             <IconButton
               component="a"
               href="https://www.facebook.com/profile.php?id=61577732596255"
