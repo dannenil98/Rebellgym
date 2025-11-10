@@ -65,7 +65,7 @@ const Oppettider = () => {
           { dag: "Tisdag", tid: "Stängt" },
           { dag: "Onsdag", tid: "17:30 – 20:00" },
           { dag: "Torsdag", tid: "Stängt" },
-          { dag: "Fredag", tid: "16:00 – 18:00" },
+          { dag: "Fredag", tid: "16:30 – 18:30" },
           { dag: "Lördag", tid: "11:00 – 13:00"  },
           { dag: "Söndag", tid: "16:00 – 18:00" },
         ].map((item, i) => (
