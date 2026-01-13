@@ -63,13 +63,13 @@ const Oppettider = () => {
         {[
           { dag: "Måndag", tid: "17:00 – 19:00" },
           { dag: "Tisdag", tid: "Stängt" },
-          { dag: "Onsdag", tid: "17:30 – 20:00" },
+          { dag: "Onsdag", tid: "09:00 – 10:30\n17:30 – 20:00" },
           { dag: "Torsdag", tid: "Stängt" },
           { dag: "Fredag", tid: "16:30 – 18:30" },
-          { dag: "Lördag", tid: "11:00 – 13:00"  },
+          { dag: "Lördag", tid: "11:00 – 13:00" },
           { dag: "Söndag", tid: "16:00 – 18:00" },
         ].map((item, i) => (
-          <Grid item xs={12} sm={6} key={i}>
+          <Grid item xs={12} sm={6} key={i} sx={{ display: "flex" }}>
             <Paper
               elevation={3}
               sx={{
@@ -79,17 +79,24 @@ const Oppettider = () => {
                 borderRadius: "12px",
                 textAlign: "center",
                 fontFamily: "'Special Gothic Expanded One', sans-serif",
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
               }}
             >
               <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
                 {item.dag}
               </Typography>
+
               <Typography
                 variant="body2"
                 sx={{
                   opacity: 0.9,
                   fontSize: "16px",
                   mt: 0.5,
+                  whiteSpace: "pre-line",
                 }}
               >
                 {item.tid}
@@ -110,7 +117,8 @@ const Oppettider = () => {
           lineHeight: 1.6,
         }}
       >
-        Öppettiderna kan variera vid röda dagar och helger.  
+        Öppettiderna kan variera vid röda dagar och helger.
+        <br />
         Följ våra sociala medier för senaste uppdateringarna.
       </Typography>
     </Box>
