@@ -66,7 +66,7 @@ const Oppettider = () => {
           { dag: "Onsdag", tid: "09:00 – 10:30\n17:30 – 20:00" },
           { dag: "Torsdag", tid: "Stängt" },
           { dag: "Fredag", tid: "16:30 – 18:30" },
-          { dag: "Lördag", tid: "11:00 – 13:00" },
+          { dag: "Lördag", tid: "Stängt" },
           { dag: "Söndag", tid: "16:00 – 18:00" },
         ].map((item, i) => (
           <Grid item xs={12} sm={6} key={i} sx={{ display: "flex" }}>
