@@ -16,7 +16,7 @@ const gymSections = [
     img: "/assets/gym-cardio.jpg",
   },
   {
-    title: "Lyftarplattformar",
+    title: "Lyftplattformar",
     desc: "Squat racks, lyftplattformar och spegelvägg för seriös styrketräning.",
     img: "/assets/gym-power.jpg",
   },
