@@ -3,30 +3,32 @@
   min-height: 100vh;
   text-align: center;
   font-family: "Inter", sans-serif;
-  color: #2f4858;
+  color: #7ab3d0;
 }
 
 .bilder-page h1 {
   font-size: 32px;
   margin-top: 40px;
   margin-bottom: 10px;
-  color: #2c5b80;
+  color: transparent;
+  -webkit-text-stroke: 1px #3E6889;
+  font-family: "Special Gothic Expanded One", sans-serif;
+  letter-spacing: 3px;
   font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
 .intro-text {
   max-width: 700px;
   margin: 0 auto 40px;
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
   color: #4a6c83;
 }
 
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -34,15 +36,17 @@
 .image-item {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(62, 104, 137, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(62, 104, 137, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .image-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(62, 104, 137, 0.35);
+  transform: scale(1.03) translateY(-3px);
+  box-shadow: 0 10px 30px rgba(79, 195, 247, 0.2);
+  border-color: rgba(79, 195, 247, 0.45);
 }
 
 .image-item img {
@@ -50,12 +54,35 @@
   height: 200px;
   object-fit: cover;
   display: block;
-  border-radius: 10px;
-  transition: transform 0.4s ease;
+  border-radius: 12px;
+  transition: transform 0.4s ease, filter 0.3s ease;
 }
 
 .image-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  filter: brightness(0.75);
+}
+
+/* Overlay text on hover */
+.image-item::after {
+  content: "Visa";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4fc3f7;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Special Gothic Expanded One", sans-serif;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.image-item:hover::after {
+  opacity: 1;
 }
 
 /* Responsiv design */
@@ -64,7 +91,7 @@
     grid-template-columns: 1fr;
   }
   .image-item img {
-    height: 160px;
+    height: 180px;
   }
 }
 

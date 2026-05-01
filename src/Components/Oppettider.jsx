@@ -1,4 +1,15 @@
 import { Box, Typography, Divider, Grid, Paper } from "@mui/material";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+
+const days = [
+  { dag: "Måndag", tid: "17:00 – 19:00", open: true },
+  { dag: "Tisdag", tid: "Stängt", open: false },
+  { dag: "Onsdag", tid: "09:00 – 10:30\n17:30 – 20:00", open: true },
+  { dag: "Torsdag", tid: "Stängt", open: false },
+  { dag: "Fredag", tid: "16:30 – 18:30", open: true },
+  { dag: "Lördag", tid: "Stängt", open: false },
+  { dag: "Söndag", tid: "16:00 – 18:00", open: true },
+];
 
 const Oppettider = () => {
   return (
@@ -16,7 +27,6 @@ const Oppettider = () => {
         pb: 8,
       }}
     >
-      {/* Rubrik */}
       <Typography
         variant="h2"
         sx={{
@@ -24,79 +34,87 @@ const Oppettider = () => {
           fontSize: { xs: "40px", sm: "60px" },
           mb: 2,
           WebkitTextStroke: "1px #3E6889",
+          color: "transparent",
+          letterSpacing: "3px",
         }}
       >
         ÖPPETTIDER
       </Typography>
 
-      {/* Divider */}
-      <Divider sx={{ width: "60px", borderColor: "#3E6889", mb: 4 }} />
+      <Divider sx={{ width: "80px", borderColor: "#4fc3f7", borderWidth: "2px", mb: 4 }} />
 
-      {/* Gymmets ordinarie öppettider */}
-      <Typography
-        variant="h5"
+      {/* Självbetjäning banner */}
+      <Box
         sx={{
-          mb: 3,
-          fontWeight: "bold",
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          backgroundColor: "rgba(79,195,247,0.08)",
+          border: "1px solid rgba(79,195,247,0.3)",
+          borderRadius: "12px",
+          px: 3,
+          py: 1.5,
+          mb: 5,
         }}
       >
-        Gymmet är öppet alla dagar: 05:00 – 23:00
-      </Typography>
+        <AccessTimeIcon sx={{ color: "#4fc3f7", fontSize: 22 }} />
+        <Typography variant="h6" sx={{ fontWeight: "bold", color: "#4fc3f7", fontSize: { xs: "14px", sm: "17px" } }}>
+          Gymmet är öppet alla dagar: 05:00 – 23:00
+        </Typography>
+      </Box>
 
-      {/* Bemannade tider */}
       <Typography
-        variant="h6"
-        sx={{
-          mb: 2,
-          textDecoration: "underline",
-        }}
+        variant="overline"
+        sx={{ mb: 3, letterSpacing: "3px", color: "#7ab3d0", fontSize: "13px" }}
       >
         Bemannade tider
       </Typography>
 
-      <Grid
-        container
-        spacing={2}
-        justifyContent="center"
-        sx={{ maxWidth: "600px" }}
-      >
-        {[
-          { dag: "Måndag", tid: "17:00 – 19:00" },
-          { dag: "Tisdag", tid: "Stängt" },
-          { dag: "Onsdag", tid: "09:00 – 10:30\n17:30 – 20:00" },
-          { dag: "Torsdag", tid: "Stängt" },
-          { dag: "Fredag", tid: "16:30 – 18:30" },
-          { dag: "Lördag", tid: "Stängt" },
-          { dag: "Söndag", tid: "16:00 – 18:00" },
-        ].map((item, i) => (
+      <Grid container spacing={2} justifyContent="center" sx={{ maxWidth: "680px" }}>
+        {days.map((item, i) => (
           <Grid item xs={12} sm={6} key={i} sx={{ display: "flex" }}>
             <Paper
-              elevation={3}
+              elevation={0}
               sx={{
-                p: 2,
-                backgroundColor: "#0d0d0d",
-                color: "#3E6889",
-                borderRadius: "12px",
+                p: { xs: 2, sm: 2.5 },
+                backgroundColor: item.open ? "rgba(62,104,137,0.1)" : "rgba(255,255,255,0.02)",
+                border: item.open
+                  ? "1px solid rgba(79,195,247,0.35)"
+                  : "1px solid rgba(255,255,255,0.06)",
+                borderRadius: "14px",
                 textAlign: "center",
-                fontFamily: "'Special Gothic Expanded One', sans-serif",
                 height: "100%",
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
+                transition: "all 0.2s ease",
+                "&:hover": item.open
+                  ? { boxShadow: "0 0 18px rgba(79,195,247,0.15)", transform: "translateY(-2px)" }
+                  : {},
               }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontWeight: "bold",
+                  fontFamily: "'Special Gothic Expanded One', sans-serif",
+                  color: item.open ? "#7ab3d0" : "#444",
+                  letterSpacing: "1px",
+                  fontSize: "15px",
+                  mb: 0.5,
+                }}
+              >
                 {item.dag}
               </Typography>
 
               <Typography
                 variant="body2"
                 sx={{
-                  opacity: 0.9,
-                  fontSize: "16px",
-                  mt: 0.5,
+                  fontSize: "15px",
                   whiteSpace: "pre-line",
+                  color: item.open ? "#4fc3f7" : "#333",
+                  fontWeight: item.open ? 500 : 400,
                 }}
               >
                 {item.tid}
@@ -106,15 +124,16 @@ const Oppettider = () => {
         ))}
       </Grid>
 
-      {/* Extra info */}
       <Typography
         variant="body2"
         sx={{
-          mt: 4,
-          maxWidth: "600px",
-          opacity: 0.7,
-          fontSize: "14px",
-          lineHeight: 1.6,
+          mt: 5,
+          maxWidth: "500px",
+          color: "#3E6889",
+          opacity: 0.6,
+          fontSize: "13px",
+          lineHeight: 1.7,
+          fontStyle: "italic",
         }}
       >
         Öppettiderna kan variera vid röda dagar och helger.
