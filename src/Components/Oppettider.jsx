@@ -4,11 +4,11 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 const days = [
   { dag: "Måndag", tid: "17:00 – 19:00", open: true },
   { dag: "Tisdag", tid: "Stängt", open: false },
-  { dag: "Onsdag", tid: "09:00 – 10:30\n17:30 – 20:00", open: true },
+  { dag: "Onsdag", tid: "10:00 - 14:00", open: true },
   { dag: "Torsdag", tid: "Stängt", open: false },
-  { dag: "Fredag", tid: "16:30 – 18:30", open: true },
+  { dag: "Fredag", tid: "10:00 - 13:00", open: true },
   { dag: "Lördag", tid: "Stängt", open: false },
-  { dag: "Söndag", tid: "16:00 – 18:00", open: true },
+  { dag: "Söndag", tid: "18:00 - 20:00", open: true },
 ];
 
 const Oppettider = () => {
