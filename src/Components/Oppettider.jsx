@@ -6,7 +6,7 @@ const days = [
   { dag: "Tisdag", tid: "Stängt", open: false },
   { dag: "Onsdag", tid: "10:00 - 14:00", open: true },
   { dag: "Torsdag", tid: "Stängt", open: false },
-  { dag: "Fredag", tid: "10:00 - 13:00", open: true },
+  { dag: "Fredag", tid: "10:00 - 12:00", open: true },
   { dag: "Lördag", tid: "Stängt", open: false },
   { dag: "Söndag", tid: "18:00 - 20:00", open: true },
 ];
