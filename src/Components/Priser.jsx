@@ -1,14 +1,21 @@
 import { Box, Typography, Divider, Chip } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import BoltIcon from "@mui/icons-material/Bolt";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import EventRepeatIcon from "@mui/icons-material/EventRepeat";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 const prices = [
-  { namn: "Engångsträning", pris: "90 kr", popular: false },
-  { namn: "Veckokort", pris: "280 kr", popular: false },
-  { namn: "Klippkort x10", pris: "650 kr", popular: false },
-  { namn: "Månadskort", pris: "520 kr", popular: true },
-  { namn: "Kvartalskort", pris: "1 250 kr", popular: false },
-  { namn: "Halvårskort", pris: "2 275 kr", popular: false },
-  { namn: "Årskort", pris: "3 995 kr", popular: false },
+  { namn: "Engångsträning", pris: "90 kr", popular: false, icon: <BoltIcon /> },
+  { namn: "Veckokort", pris: "280 kr", popular: false, icon: <DateRangeIcon /> },
+  { namn: "Klippkort x10", pris: "650 kr", popular: false, icon: <ConfirmationNumberIcon /> },
+  { namn: "Månadskort", pris: "520 kr", popular: true, icon: <CalendarMonthIcon /> },
+  { namn: "Kvartalskort", pris: "1 250 kr", popular: false, icon: <EventRepeatIcon /> },
+  { namn: "Halvårskort", pris: "2 275 kr", popular: false, icon: <EventAvailableIcon /> },
+  { namn: "Årskort", pris: "3 995 kr", popular: false, icon: <WorkspacePremiumIcon /> },
 ];
 
 const Priser = () => {
@@ -56,6 +63,7 @@ const Priser = () => {
           <Box
             key={i}
             sx={{
+              position: "relative",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -67,6 +75,7 @@ const Priser = () => {
                 ? "rgba(255,255,255,0.015)"
                 : "transparent",
               borderLeft: item.popular ? "3px solid #4fc3f7" : "3px solid transparent",
+              boxShadow: item.popular ? "inset 0 0 30px rgba(79,195,247,0.08)" : "none",
               transition: "background 0.2s ease",
               "&:hover": {
                 backgroundColor: item.popular
@@ -76,6 +85,22 @@ const Priser = () => {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 34,
+                  height: 34,
+                  borderRadius: "10px",
+                  flexShrink: 0,
+                  color: item.popular ? "#4fc3f7" : "#3E6889",
+                  backgroundColor: item.popular ? "rgba(79,195,247,0.15)" : "rgba(62,104,137,0.1)",
+                  "& svg": { fontSize: "18px" },
+                }}
+              >
+                {item.icon}
+              </Box>
               <Typography
                 sx={{
                   color: item.popular ? "#4fc3f7" : "#7ab3d0",

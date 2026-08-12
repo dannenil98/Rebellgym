@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
       <Box
         sx={{
           flex: 1,
+          width: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",

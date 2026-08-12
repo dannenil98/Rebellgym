@@ -3,6 +3,10 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import GroupsIcon from "@mui/icons-material/Groups";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 
 const gymSections = [
   {
@@ -34,20 +38,27 @@ const gymSections = [
 
 const features = [
   {
-    ikon: <FitnessCenterIcon sx={{ fontSize: 44, color: "#4fc3f7" }} />,
+    ikon: <FitnessCenterIcon sx={{ fontSize: 32, color: "#4fc3f7" }} />,
     titel: "Träning för alla",
     text: "Nybörjare som proffs. Vi har utrustning och miljö för alla nivåer.",
   },
   {
-    ikon: <GroupsIcon sx={{ fontSize: 44, color: "#4fc3f7" }} />,
+    ikon: <GroupsIcon sx={{ fontSize: 32, color: "#4fc3f7" }} />,
     titel: "Gemenskap",
     text: "Hos oss stöttar vi varandra och växer tillsammans.",
   },
   {
-    ikon: <WhatshotIcon sx={{ fontSize: 44, color: "#4fc3f7" }} />,
+    ikon: <WhatshotIcon sx={{ fontSize: 32, color: "#4fc3f7" }} />,
     titel: "Driv och resultat",
     text: "Utmana dig själv varje dag. Bli starkare — mentalt och fysiskt.",
   },
+];
+
+const stats = [
+  { num: "05:00", label: "Öppnar varje dag", icon: <AccessTimeIcon sx={{ fontSize: 20 }} /> },
+  { num: "23:00", label: "Stänger varje dag", icon: <NightlightRoundIcon sx={{ fontSize: 20 }} /> },
+  { num: "500+", label: "Kvadratmeter", icon: <SquareFootIcon sx={{ fontSize: 20 }} /> },
+  { num: "PT", label: "Personlig tränare på plats", icon: <SupportAgentIcon sx={{ fontSize: 20 }} /> },
 ];
 
 const Homepage = () => {
@@ -66,7 +77,7 @@ const Homepage = () => {
           justifyContent: "center",
         }}
       >
-        {/* Bakgrundsbild */}
+        {/* Bakgrundsbild med Ken Burns-rörelse */}
         <Box
           component="img"
           src="/assets/gym-hero.jpg"
@@ -79,8 +90,24 @@ const Homepage = () => {
             objectFit: "cover",
             objectPosition: "center",
             filter: "brightness(0.35)",
-            transform: "scale(1.05)",
-            transition: "transform 8s ease",
+            animation: "kenBurns 18s ease-in-out infinite alternate",
+          }}
+        />
+
+        {/* Ambienta glow-orbar */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "8%",
+            left: "50%",
+            width: { xs: "260px", sm: "420px" },
+            height: { xs: "260px", sm: "420px" },
+            transform: "translateX(-50%)",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(79,195,247,0.25) 0%, transparent 70%)",
+            filter: "blur(20px)",
+            animation: "floatOrb 9s ease-in-out infinite",
+            pointerEvents: "none",
           }}
         />
 
@@ -175,11 +202,12 @@ const Homepage = () => {
                 borderRadius: "6px",
                 letterSpacing: "1px",
                 textTransform: "none",
+                boxShadow: "0 0 0 rgba(79,195,247,0.5)",
                 transition: "all 0.3s ease",
                 "&:hover": {
                   backgroundColor: "#fff",
                   transform: "translateY(-2px)",
-                  boxShadow: "0 8px 30px rgba(79,195,247,0.4)",
+                  boxShadow: "0 8px 30px rgba(79,195,247,0.5)",
                 },
               }}
             >
@@ -249,27 +277,43 @@ const Homepage = () => {
           px: { xs: 4, sm: 8 },
         }}
       >
-        <Grid container spacing={2} justifyContent="center">
-          {[
-            { num: "05:00", label: "Öppnar varje dag" },
-            { num: "23:00", label: "Stänger varje dag" },
-            { num: "500+", label: "Kvadratmeter" },
-            { num: "PT", label: "Personlig tränare på plats" },
-          ].map((item, i) => (
+        <Grid container spacing={2} justifyContent="center" sx={{ maxWidth: "1200px", mx: "auto" }}>
+          {stats.map((item, i) => (
             <Grid item xs={6} sm={3} key={i}>
-              <Box sx={{ textAlign: "center" }}>
+              <Box
+                sx={{
+                  textAlign: "center",
+                  position: "relative",
+                  px: 2,
+                  ...(i < stats.length - 1 && {
+                    "&::after": {
+                      content: '""',
+                      display: { xs: "none", sm: "block" },
+                      position: "absolute",
+                      right: 0,
+                      top: "10%",
+                      height: "80%",
+                      width: "1px",
+                      background: "rgba(62,104,137,0.25)",
+                    },
+                  }),
+                }}
+              >
+                <Box sx={{ display: "inline-flex", color: "#4fc3f7", mb: 1, opacity: 0.85 }}>
+                  {item.icon}
+                </Box>
                 <Typography
                   sx={{
                     fontFamily: "'Special Gothic Expanded One', sans-serif",
-                    fontSize: { xs: "26px", sm: "36px", md: "44px" },
-                    color: "#4fc3f7",
+                    fontSize: { xs: "22px", sm: "32px", md: "38px" },
+                    color: "#fff",
                     lineHeight: 1,
                     mb: 0.5,
                   }}
                 >
                   {item.num}
                 </Typography>
-                <Typography sx={{ color: "#3E6889", fontSize: { xs: "11px", sm: "13px" }, letterSpacing: "1px" }}>
+                <Typography sx={{ color: "#3E6889", fontSize: { xs: "10px", sm: "12px" }, letterSpacing: "1px" }}>
                   {item.label}
                 </Typography>
               </Box>
@@ -303,7 +347,7 @@ const Homepage = () => {
           Moderna lokaler — helt utrustade
         </Typography>
 
-        <Grid container spacing={{ xs: 2, sm: 3 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }} justifyContent="center" sx={{ maxWidth: "1400px", mx: "auto" }}>
           {gymSections.map((section, i) => (
             <Grid item xs={12} sm={4} key={i}>
               <Box
@@ -314,6 +358,11 @@ const Homepage = () => {
                   overflow: "hidden",
                   cursor: "pointer",
                   border: "1px solid rgba(62,104,137,0.2)",
+                  transition: "border-color 0.4s ease, box-shadow 0.4s ease",
+                  "&:hover": {
+                    borderColor: "rgba(79,195,247,0.5)",
+                    boxShadow: "0 20px 60px rgba(79,195,247,0.15)",
+                  },
                   "&:hover .gym-img": {
                     transform: "scale(1.08)",
                     filter: "brightness(0.4)",
@@ -347,6 +396,21 @@ const Homepage = () => {
                     background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%)",
                   }}
                 />
+
+                {/* Indexnummer */}
+                <Typography
+                  sx={{
+                    position: "absolute",
+                    top: { xs: 14, sm: 18 },
+                    right: { xs: 16, sm: 20 },
+                    fontFamily: "'Cascadia Mono', monospace",
+                    fontSize: "13px",
+                    letterSpacing: "1px",
+                    color: "rgba(255,255,255,0.55)",
+                  }}
+                >
+                  0{i + 1}
+                </Typography>
 
                 {/* Titel alltid synlig */}
                 <Box
@@ -411,7 +475,7 @@ const Homepage = () => {
           VARFÖR REBELL GYM?
         </Typography>
 
-        <Grid container spacing={{ xs: 3, sm: 4 }} justifyContent="center">
+        <Grid container spacing={{ xs: 3, sm: 4 }} justifyContent="center" sx={{ maxWidth: "1200px", mx: "auto" }}>
           {features.map((item, i) => (
             <Grid item xs={12} sm={4} key={i}>
               <Box
@@ -433,7 +497,21 @@ const Homepage = () => {
                   },
                 }}
               >
-                <Box sx={{ mb: 2 }}>{item.ikon}</Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 68,
+                    height: 68,
+                    borderRadius: "50%",
+                    mb: 2.5,
+                    background: "radial-gradient(circle, rgba(79,195,247,0.16) 0%, rgba(79,195,247,0.02) 70%)",
+                    border: "1px solid rgba(79,195,247,0.25)",
+                  }}
+                >
+                  {item.ikon}
+                </Box>
                 <Typography
                   sx={{
                     fontFamily: "'Special Gothic Expanded One', sans-serif",
@@ -488,6 +566,20 @@ const Homepage = () => {
             background: "linear-gradient(135deg, rgba(0,0,0,0.6), rgba(79,195,247,0.05))",
           }}
         />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: "500px",
+            height: "500px",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(79,195,247,0.12) 0%, transparent 70%)",
+            filter: "blur(10px)",
+            pointerEvents: "none",
+          }}
+        />
         <Box sx={{ position: "relative", zIndex: 2 }}>
           <Typography
             sx={{
@@ -518,11 +610,13 @@ const Homepage = () => {
               borderRadius: "6px",
               letterSpacing: "1px",
               textTransform: "none",
+              animation: "glowPulse 2.5s ease-in-out infinite",
               transition: "all 0.3s ease",
               "&:hover": {
                 backgroundColor: "#fff",
                 transform: "translateY(-2px)",
                 boxShadow: "0 10px 40px rgba(79,195,247,0.5)",
+                animation: "none",
               },
             }}
           >
@@ -547,6 +641,10 @@ const Homepage = () => {
         @keyframes pulse {
           0%, 100% { opacity: 0.6; transform: scaleY(1); }
           50% { opacity: 1; transform: scaleY(1.2); }
+        }
+        @keyframes kenBurns {
+          from { transform: scale(1); }
+          to { transform: scale(1.1); }
         }
       `}</style>
     </Box>

@@ -54,6 +54,18 @@ const OmOss = () => {
             position: "relative",
           }}
         >
+          {/* Ambient glow bakom porträttet */}
+          <Box
+            sx={{
+              position: "absolute",
+              inset: "-40px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(79,195,247,0.18) 0%, transparent 70%)",
+              filter: "blur(10px)",
+              animation: "floatOrb 10s ease-in-out infinite",
+              pointerEvents: "none",
+            }}
+          />
           <Box
             sx={{
               width: { xs: "220px", sm: "300px", md: "360px" },
@@ -62,6 +74,7 @@ const OmOss = () => {
               border: "3px solid rgba(79,195,247,0.4)",
               boxShadow: "0 0 40px rgba(79,195,247,0.15), 0 8px 30px rgba(0,0,0,0.6)",
               overflow: "hidden",
+              position: "relative",
             }}
           >
             <Box

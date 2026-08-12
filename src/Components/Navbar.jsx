@@ -25,9 +25,11 @@ const Navbar = () => {
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "#000",
+        backgroundColor: "rgba(0,0,0,0.85)",
+        backdropFilter: "blur(10px)",
         color: "#3E6889",
-        boxShadow: "0 0px 6px rgba(62, 104, 137)",
+        borderBottom: "1px solid rgba(79,195,247,0.15)",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
         position: "fixed",
         top: 0,
         left: 0,
@@ -36,7 +38,7 @@ const Navbar = () => {
     >
       <Box
         sx={{
-          px: "20px",
+          px: { xs: "20px", md: "24px", lg: "32px" },
           py: "10px",
           display: "flex",
           justifyContent: "space-between",
@@ -48,64 +50,68 @@ const Navbar = () => {
           component={Link}
           to="/"
           sx={{
-            fontSize: "28px",
+            fontSize: { xs: "22px", md: "20px", lg: "26px" },
+            fontWeight: 700,
             letterSpacing: "2px",
             cursor: "pointer",
-            color: "#3E6889",
             textDecoration: "none",
-            "&:hover": { color: "#4fc3f7" },
+            flexShrink: 0,
+            background: "linear-gradient(120deg, #7ab3d0 20%, #4fc3f7 60%, #8fe3ff 100%)",
+            backgroundSize: "200% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            transition: "background-position 0.5s ease, filter 0.3s ease",
+            "&:hover": { backgroundPosition: "100% center", filter: "brightness(1.2)" },
           }}
         >
           REBELL GYM
         </Box>
 
         {/* Desktop-länkar */}
-     <Box sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center" }}>
-  {navLinks.map((item, index) => {
+     <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: { md: 0.5, lg: 1 } }}>
+  {navLinks.map((item) => {
     const isActive = location.pathname === item.path;
     return (
-      <React.Fragment key={item.text}>
-        <Button
-          component={Link}
-          to={item.path}
-          sx={{
-            color: isActive ? "#4fc3f7" : "#3E6889",
-            fontSize: "16px",
-            textTransform: "none",
-            px: 1.5, // padding inom knappen
-            mx: { lg: 1.5 }, // större mellanrum på stora skärmar
-            borderBottom: isActive
-              ? "3px solid #4fc3f7"
-              : "3px solid transparent",
-            transition: "color 0.3s, border-bottom 0.3s",
-            "&:hover": {
-              color: "#4fc3f7",
-              borderBottom: "3px solid #4fc3f7",
-            },
-          }}
-        >
-          {item.text}
-        </Button>
-
-        {/* Divider mellan länkarna, utom sista */}
-        {index < navLinks.length - 1 && (
-          <Box
-            sx={{
-              width: "1px",
-              height: "20px",
-              backgroundColor: "rgba(62,104,137,0.4)",
-              mx: { lg: 2 }, // avstånd mellan divider och knappar
-            }}
-          />
-        )}
-      </React.Fragment>
+      <Button
+        key={item.text}
+        component={Link}
+        to={item.path}
+        sx={{
+          color: isActive ? "#0a1520" : "#7ab3d0",
+          fontSize: { md: "12.5px", lg: "14.5px" },
+          fontWeight: isActive ? 700 : 500,
+          textTransform: "none",
+          whiteSpace: "nowrap",
+          px: { md: 1.4, lg: 2 },
+          py: 0.8,
+          borderRadius: "999px",
+          backgroundColor: isActive ? "#4fc3f7" : "transparent",
+          boxShadow: isActive ? "0 0 18px rgba(79,195,247,0.45)" : "none",
+          transition: "all 0.25s ease",
+          "&:hover": {
+            color: isActive ? "#0a1520" : "#4fc3f7",
+            backgroundColor: isActive ? "#4fc3f7" : "rgba(79,195,247,0.1)",
+          },
+        }}
+      >
+        {item.text}
+      </Button>
     );
   })}
 </Box>
 
         {/* Social ikoner och hamburger */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexShrink: 0 }}>
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              gap: 1,
+              pl: { sm: 1.5 },
+              ml: { sm: 0.5 },
+              borderLeft: { sm: "1px solid rgba(62,104,137,0.3)" },
+            }}
+          >
             <IconButton
               component="a"
               href="https://www.facebook.com/profile.php?id=61577732596255"
@@ -128,7 +134,7 @@ const Navbar = () => {
 
           <IconButton
             onClick={() => setMenuOpen(!menuOpen)}
-            sx={{ display: { xs: "flex", lg: "none" }, color: "#3E6889" }}
+            sx={{ display: { xs: "flex", md: "none" }, color: "#3E6889" }}
           >
             {menuOpen ? <CloseIcon sx={{ fontSize: 30 }} /> : <MenuIcon sx={{ fontSize: 30 }} />}
           </IconButton>

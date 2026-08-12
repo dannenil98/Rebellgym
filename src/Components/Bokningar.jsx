@@ -15,7 +15,7 @@ const bookingOptions = [
     subtitle: "Perfekt för dig som är ny",
     duration: "1 timme",
     prices: [{ label: "Solo", price: "300 kr" }, { label: "Duo", price: "400 kr" }],
-    icon: <FitnessCenterIcon sx={{ fontSize: 40, color: "#4fc3f7" }} />,
+    icon: <FitnessCenterIcon sx={{ fontSize: 26, color: "#4fc3f7" }} />,
     desc: "Få en personlig genomgång av gymmet, lär dig hur maskinerna fungerar och kom igång med din träning på rätt sätt.",
     includes: [
       "Genomgång av all utrustning",
@@ -30,7 +30,7 @@ const bookingOptions = [
     subtitle: "Träna smartare — nå snabbare resultat",
     duration: "1 timme",
     prices: [{ label: "Per pass", price: "750 kr" }],
-    icon: <PersonIcon sx={{ fontSize: 40, color: "#4fc3f7" }} />,
+    icon: <PersonIcon sx={{ fontSize: 26, color: "#4fc3f7" }} />,
     desc: "Ett PT-pass anpassat helt efter dina mål och förutsättningar. Oavsett om du vill gå ner i vikt, bygga muskler eller bli starkare.",
     includes: [
       "Individuellt anpassat program",
@@ -204,7 +204,21 @@ const Bokningar = () => {
             {/* Kortinnehåll */}
             <Box sx={{ p: { xs: 3, sm: 4 }, display: "flex", flexDirection: "column", flex: 1 }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                {opt.icon}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 56,
+                    height: 56,
+                    flexShrink: 0,
+                    borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(79,195,247,0.16) 0%, rgba(79,195,247,0.02) 70%)",
+                    border: "1px solid rgba(79,195,247,0.25)",
+                  }}
+                >
+                  {opt.icon}
+                </Box>
                 <Box>
                   <Typography
                     sx={{

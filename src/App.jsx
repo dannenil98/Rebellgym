@@ -13,6 +13,25 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: `
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          position: relative;
+        }
+
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          pointer-events: none;
+          opacity: 0.035;
+          mix-blend-mode: overlay;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
         @keyframes slideDown {
           0% {
             transform: translateY(-100px);
@@ -34,11 +53,21 @@ const theme = createTheme({
             opacity: 1;
           }
         }
+
+        @keyframes floatOrb {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(20px, -30px) scale(1.08); }
+        }
+
+        @keyframes glowPulse {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
       `,
     },
   },
   typography: {
-    fontFamily: "Special Gothic Expanded One, sans-serif",
+    fontFamily: "'Cascadia Mono', 'Special Gothic Expanded One', monospace",
   },
   palette: {
     background: {
